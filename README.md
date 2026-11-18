@@ -18,6 +18,34 @@ HR Analytics Dataset
 3. Créer une analyse claire, des visualisations et un livrable final.
 
 
+## Qui contribue le plus ? Le score de contribution
+
+Après l'analyse descriptive, le script classe les employés avec un **score de contribution sur 100** :
+
+| Critère | Poids | Ce qu'il mesure |
+|---|---|---|
+| Performance | 50 % | Le score de performance |
+| Efficacité | 30 % | La performance par heure travaillée : produire beaucoup sans heures excessives |
+| Satisfaction | 20 % | L'engagement, qui compte pour le collectif |
+
+Chaque critère est converti en rang centile avant d'être pondéré. Le score reste ainsi robuste aux valeurs extrêmes et ne dépend pas des unités. Les poids se règlent en haut du script, dans `SCORE_WEIGHTS`.
+
+### Utilisation
+
+```bash
+python projet2_analyse_employes.py                        # dataset de démonstration
+python projet2_analyse_employes.py --data mes_rh.csv      # vos propres données
+python projet2_analyse_employes.py --data mes_rh.csv --top 5
+```
+
+Votre CSV doit contenir les colonnes `EmployeeID`, `Department`, `PerformanceScore`, `HoursWorked` et `Satisfaction`. `Segment` et `Age` sont facultatives. Les lignes incomplètes, non numériques ou à zéro heure sont écartées et comptées.
+
+### Sorties
+
+- Le top N dans le terminal, puis l'employé le plus contributif en une phrase.
+- `classement_employes.csv` : le classement complet.
+- `top_employes.png` : le top N en graphique.
+
 ## Stack Technique Utilisée
 
 ### Langages & Environnement
